@@ -18,10 +18,8 @@ public class MobileSliderTest extends Base {
 		String username = ExcelUtility.getString(1, 0, "LoginPage");
 		String password = ExcelUtility.getString(1, 1, "LoginPage");
 		String category = ExcelUtility.getString(0, 1, "MobileSliderPage");
-		
 		LoginPage loginPage = new LoginPage(driver);
 		MobileSliderPage mobileSliderPage = new MobileSliderPage(driver);
-		
 		loginPage.enterUserNameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnTheSigninButton();
 		mobileSliderPage.clickOnMobileSliderMoreInfo().clickOnNewButton().selectCategoryFromDropdown(category)
 		.clickOnChooseFileToUploadImage().clickOnSaveButton();

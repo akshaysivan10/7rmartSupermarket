@@ -18,10 +18,8 @@ public class CategoryTest extends Base{
 		String username = ExcelUtility.getString(1, 0, "LoginPage");
 		String password = ExcelUtility.getString(1, 1, "LoginPage");
 		String category = ExcelUtility.getString(0, 1, "CategoryPage");
-		
 		LoginPage loginPage = new LoginPage(driver);
-		CategoryPage categoryPage = new CategoryPage(driver);
-		
+		CategoryPage categoryPage = new CategoryPage(driver);	
 		loginPage.enterUserNameOnUserNameField(username).enterPasswordOnPasswordField(password).clickOnTheSigninButton();
 		categoryPage.clickOnCategoryMoreInfo().clickOnNewButton().enterCategoryOnCategoryField(category).clickOnDiscountInSelectGroups()
 		.clickOnChooseFileToUploadImage().clickOnSaveButton();
