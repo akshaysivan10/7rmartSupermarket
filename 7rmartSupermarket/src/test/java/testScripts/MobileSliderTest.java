@@ -13,8 +13,8 @@ import utilities.ExcelUtility;
 public class MobileSliderTest extends Base {
 
 	@Test
-	public void verifyWhetherNewSliderInformationsCanBeAdded() {
-		
+	public void verifyWhetherNewMobileSliderInformationsCanBeAdded() {
+
 		String username = ExcelUtility.getString(1, 0, "LoginPage");
 		String password = ExcelUtility.getString(1, 1, "LoginPage");
 		String category = ExcelUtility.getString(0, 1, "MobileSliderPage");

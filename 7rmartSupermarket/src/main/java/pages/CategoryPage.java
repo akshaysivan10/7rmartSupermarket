@@ -13,56 +13,56 @@ import utilities.WaitUtility;
 public class CategoryPage {
 
 	public WebDriver driver;
-	
+
 	public CategoryPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath = "//p[text()='Category']//following::a[@href='https://groceryapp.uniqassosiates.com/admin/list-category']") WebElement categoryMoreInfo;
-	@FindBy(xpath = "//a[@onclick='click_button(1)']") WebElement newButton;
-	@FindBy(xpath = "//input[@id='category']") WebElement enterTheCategory;
-	@FindBy(xpath = "//li[@id='134-selectable']") WebElement discount;
-	@FindBy(xpath = "//input[@id='main_img']") WebElement chooseFile;
-	@FindBy(xpath = "//button[text()='Save']") WebElement saveButton;
-	@FindBy(xpath = "//div[contains(@class,'alert-success')]") WebElement confirmationAlert;
-	
+
+	@FindBy(xpath = "//p[text()='Category']//following::a[@href='https://groceryapp.uniqassosiates.com/admin/list-category']") private WebElement categoryMoreInfo;
+	@FindBy(xpath = "//a[@onclick='click_button(1)']") private WebElement newButton;
+	@FindBy(xpath = "//input[@id='category']") private WebElement enterTheCategory;
+	@FindBy(xpath = "//li[@id='134-selectable']") private WebElement discount;
+	@FindBy(xpath = "//input[@id='main_img']") private WebElement chooseFile;
+	@FindBy(xpath = "//button[text()='Save']") private WebElement saveButton;
+	@FindBy(xpath = "//div[contains(@class,'alert-success')]") private WebElement confirmationAlert;
+
 	public CategoryPage clickOnCategoryMoreInfo() {
 		categoryMoreInfo.click();
 		return this;
 	}
-	
+
 	public CategoryPage clickOnNewButton() {
+		WaitUtility waitUtility = new WaitUtility();
+		waitUtility.waitForElement(driver, newButton);
 		newButton.click();
 		return this;
 	}
-	
+
 	public CategoryPage enterCategoryOnCategoryField(String categoryName) {
 		enterTheCategory.sendKeys(categoryName);
 		return this;
 	}
-	
+
 	public CategoryPage clickOnDiscountInSelectGroups() {
 		discount.click();
 		return this;
 	}
-	
+
 	public CategoryPage clickOnChooseFileToUploadImage() {
-		String path = GeneralUtility.IMAGE1;
+		String path = GeneralUtility.ADDCATEGORY_DIARYMILK_IMAGEUPLOAD;
 		FileUploadUtility fileUploadUtility = new FileUploadUtility();
 		fileUploadUtility.fileUploadUsingSendKeys(chooseFile, path);
 		return this;
 	}
-	
+
 	public CategoryPage clickOnSaveButton() {
 		PageUtility pageUtility = new PageUtility();
 		pageUtility.javaScriptExecutorForClick(driver, saveButton);
 		return this;
 	}
-	
+
 	public boolean isConfirmationMessageAlertDisplayed() {
-		WaitUtility waitUtility = new WaitUtility();
-		waitUtility.waitForElement(driver, confirmationAlert);
 		return confirmationAlert.isDisplayed();
 	}
 }

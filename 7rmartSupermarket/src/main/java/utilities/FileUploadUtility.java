@@ -14,7 +14,7 @@ public class FileUploadUtility {
 	{
 		element.sendKeys(filePath);
 	}
-	
+
 	public void fileUploadUsingRobotClass(WebElement element, String filePath) throws AWTException
 	{
 		element.click();
