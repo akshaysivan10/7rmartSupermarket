@@ -4,8 +4,6 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
-import com.obsqura.rmartSupermarket.Base;
-
 import pages.AdminUsersPage;
 import pages.LoginPage;
 import utilities.ExcelUtility;

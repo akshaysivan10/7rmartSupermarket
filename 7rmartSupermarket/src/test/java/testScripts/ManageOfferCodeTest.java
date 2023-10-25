@@ -4,8 +4,6 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
-import com.obsqura.rmartSupermarket.Base;
-
 import pages.LoginPage;
 import pages.ManageOfferCodePage;
 import utilities.ExcelUtility;
@@ -13,7 +11,7 @@ import utilities.ExcelUtility;
 public class ManageOfferCodeTest extends Base {
 
 	@Test
-	public void verifyWhetherTheUserIsAbleToDeleteLocation() {
+	public void verifyWhetherTheUserIsAbleToAddNewOfferCode() {
 		String username = ExcelUtility.getString(1, 0, "LoginPage");
 		String password = ExcelUtility.getString(1, 1, "LoginPage");
 		String offerCode = ExcelUtility.getString(0, 1, "ManageOfferCodePage");

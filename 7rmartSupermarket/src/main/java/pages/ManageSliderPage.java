@@ -1,8 +1,5 @@
 package pages;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,9 +25,17 @@ public WebDriver driver;
 	@FindBy(xpath = "//input[@id='link']") private WebElement linkField;
 	@FindBy(xpath = "//button[text()='Save']") private WebElement saveButton;
 	@FindBy(xpath = "//div[contains(@class,'alert-success')]") private WebElement confirmationMessage;
-	@FindBy(xpath = "//td[text()='https://7rmartsupermarket/icecream/choco']//following::i[contains(@class,'fa-edit')][1]") private WebElement editButton;
+	@FindBy(xpath = "//td[text()='https://7rmartsupermarket/icecream/chocolate']//following::i[contains(@class,'fa-edit')][1]") private WebElement editButton;
 	@FindBy(xpath = "//span[contains(@class,'fa-trash-alt')]") private WebElement deleteIcon;
 	@FindBy(xpath = "//button[text()='Update']") private WebElement updateButton;
+	@FindBy(xpath = "//td[text()='https://7rmartsupermarket/icecream/chocolate']//following::i[contains(@class,'fa-trash-alt')][1]") private WebElement deleteButton;
+	@FindBy(xpath = "//a[text()=' Reset']") private WebElement resetButton;
+	@FindBy(xpath = "//a[text()='Home']") private WebElement home;
+	@FindBy(xpath = "//li[text()='Dashboard']") private WebElement dashboard;
+	
+	PageUtility pageUtility = new PageUtility();
+	FileUploadUtility fileUploadUtility = new FileUploadUtility();
+	WaitUtility waitUtility = new WaitUtility();
 	
 	public ManageSliderPage clickOnManageSliderMoreInfo() {
 		manageSliderMoreInfo.click();
@@ -44,7 +49,6 @@ public WebDriver driver;
 	
 	public ManageSliderPage clickOnChooseFileToUploadImage() {
 		String path = GeneralUtility.MANAGESLIDER_ICECREAM_IMAGEUPLOAD;
-		FileUploadUtility fileUploadUtility = new FileUploadUtility();
 		fileUploadUtility.fileUploadUsingSendKeys(imageChooseFile, path);
 		return this;
 	}
@@ -56,13 +60,11 @@ public WebDriver driver;
 	}
 	
 	public ManageSliderPage clickOnSaveButton() {
-		PageUtility pageUtility = new PageUtility();
 		pageUtility.javaScriptExecutorForClick(driver, saveButton);
 		return this;
 	}
 	
 	public boolean isConfirmationMessageDisplayed() {
-		WaitUtility waitUtility = new WaitUtility();
 		waitUtility.waitForElement(driver, confirmationMessage);
 		return confirmationMessage.isDisplayed();
 	}
@@ -74,14 +76,39 @@ public WebDriver driver;
 	
 	public ManageSliderPage clickOnDeleteIcon() {
 		deleteIcon.click();
-		PageUtility pageUtility = new PageUtility();
 		pageUtility.switchToAlertAndAccept(driver);
 		return this;
 	}
 	
 	public ManageSliderPage clickOnUpdateButton() {
-		PageUtility pageUtility = new PageUtility();
+		
 		pageUtility.javaScriptExecutorForClick(driver, updateButton);
 		return this;
+	}
+	
+	public ManageSliderPage clickOnChooseFileToUploadImageToEditImage() {
+		String path = GeneralUtility.MANAGESLIDER_CHOCOLATEICECREAM_IMAGEUPLOAD;
+		fileUploadUtility.fileUploadUsingSendKeys(imageChooseFile, path);
+		return this;
+	}
+	
+	public ManageSliderPage clickOnDeleteButton() {
+		pageUtility.javaScriptExecutorForClick(driver, deleteButton);
+		pageUtility.switchToAlertAndAccept(driver);
+		return this;
+	} 
+	
+	public ManageSliderPage clickOnResetButton() {
+		resetButton.click();
+		return this;
+	}
+	
+	public ManageSliderPage clickOnHomeLink() {
+		home.click();
+		return this;
+	}
+	
+	public boolean isHomePageDisplayed() {
+		return dashboard.isDisplayed();
 	}
 }
